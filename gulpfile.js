@@ -14,18 +14,21 @@ const environment = {
     }
 };
 
+const swallowError = (stream) =>
+{
+    return stream.on("error", (error) =>
+    {
+        console.log(error.toString());
+
+        return this;
+    });
+};
+
 const pcss = () =>
 {
     return gulp
     .src(environment.paths.sources.pcss)
-    .pipe
-    (
-        require("gulp-postcss")([ require("precss"), require("autoprefixer") ])
-        .on("error", (err) =>
-        {
-            console.log(err.toString());
-        })
-    )
+    .pipe(swallowError(require("gulp-postcss")([ require("precss"), require("autoprefixer") ])))
     .pipe(gulp.dest(environment.paths.destinations.build));
 };
 
@@ -33,7 +36,7 @@ const html = () =>
 {
     return gulp
     .src(environment.paths.sources.html)
-    .pipe(require("gulp-inline-source")())
+    .pipe(swallowError(require("gulp-inline-source")()))
     .pipe(gulp.dest(environment.paths.destinations.build));
 };
 
