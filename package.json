@@ -1,0 +1,30 @@
+{
+  "name": "cllp.se",
+  "version": "1.0.0",
+  "description": ">>><<<",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cllpse/cllp.se.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cllpse/cllp.se/issues"
+  },
+  "homepage": "https://github.com/cllpse/cllp.se#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.1.5",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-webserver": "^0.9.1",
+    "precss": "^3.1.2"
+  },
+  "dependencies": {
+    "gulp-cli": "github:gulpjs/gulp-cli",
+    "save-dev": "^2.0.0"
+  }
+}
