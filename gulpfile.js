@@ -18,7 +18,14 @@ const pcss = () =>
 {
     return gulp
     .src(environment.paths.sources.pcss)
-    .pipe(require("gulp-postcss")([ require("precss"), require("autoprefixer") ]))
+    .pipe
+    (
+        require("gulp-postcss")([ require("precss"), require("autoprefixer") ])
+        .on("error", (err) =>
+        {
+            console.log(err.toString());
+        })
+    )
     .pipe(gulp.dest(environment.paths.destinations.build));
 };
 
