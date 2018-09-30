@@ -9,7 +9,7 @@ const environment = {
         },
 
         destinations: {
-            biuld: "build/"
+            build: "build/"
         }
     }
 };
@@ -19,14 +19,15 @@ const pcss = () =>
     return gulp
     .src(environment.paths.sources.pcss)
     .pipe(require("gulp-postcss")([ require("precss"), require("autoprefixer") ]))
-    .pipe(gulp.dest(environment.paths.destinations.biuld));
+    .pipe(gulp.dest(environment.paths.destinations.build));
 };
 
 const html = () =>
 {
     return gulp
     .src(environment.paths.sources.html)
-    .pipe(gulp.dest(environment.paths.destinations.biuld));
+    .pipe(require("gulp-inline-source")())
+    .pipe(gulp.dest(environment.paths.destinations.build));
 };
 
 const compile = gulp.series(pcss, html);
@@ -40,7 +41,7 @@ const watch = () =>
 const serve = () =>
 {
     gulp
-    .src(environment.paths.destinations.biuld)
+    .src(environment.paths.destinations.build)
     .pipe(require("gulp-webserver")());
 };
 
