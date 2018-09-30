@@ -1,8 +1,7 @@
 const gulp = require("gulp");
 
 const environment = {
-    paths:
-    {
+    paths: {
         sources: {
             pcss: "src/pcss/*.pcss",
             html: "src/html/*.html",
@@ -37,6 +36,7 @@ const html = () =>
     return gulp
     .src(environment.paths.sources.html)
     .pipe(swallowError(require("gulp-inline-source")()))
+    .pipe(require("gulp-minimize")())
     .pipe(gulp.dest(environment.paths.destinations.build));
 };
 
